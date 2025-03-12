@@ -24,6 +24,7 @@ public class KeyFileManager {
             return new SecretKeySpec(keyBytes, algorithm);
         }
     }
+
     public static void saveKeysToFile(byte[][] keys, String filename) throws IOException {
         try (FileOutputStream fos = new FileOutputStream(filename);
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
@@ -34,8 +35,7 @@ public class KeyFileManager {
 
     public static byte[][] loadKeysFromFile(String filename) throws IOException, ClassNotFoundException {
         try (FileInputStream fis = new FileInputStream(filename);
-             ObjectInputStream ois = new ObjectInputStream(fis))
-        {
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
             return (byte[][]) ois.readObject();
         }
     }
@@ -50,14 +50,13 @@ public class KeyFileManager {
             KeyGenerator keyGen = KeyGenerator.getInstance("DESede");
             keyGen.init(168);
             SecretKey secretKey = keyGen.generateKey();
-             saveKeyToFile(secretKey, "my_key.txt");
+            saveKeyToFile(secretKey, "my_key.txt");
 
             // 3. Завантажте ключ з файлу
             SecretKey loadedKey = loadKeyFromFile("my_key.txt", "DESede");
 
             // 4. Використовуйте завантажений ключ
             System.out.println("Завантажений ключ: " + loadedKey);
-
 
 
         } catch (Exception e) {

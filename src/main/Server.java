@@ -31,7 +31,7 @@ public class Server {
         // Генерація наступного ключа
         byte[] key2 = keyGenerator.generateKey().getEncoded();
         // Генерація наступного ключа
-        byte[] key3 =  keyGenerator.generateKey().getEncoded();
+        byte[] key3 = keyGenerator.generateKey().getEncoded();
 
         byte[][] Tkey = {key, key2, key3};
         Scanner scanner1 = new Scanner(System.in);
@@ -39,7 +39,8 @@ public class Server {
         String inputText = scanner1.nextLine();
 
         // використовуємо зегеровані ключі
-        if (inputText.equals("1")) {}
+        if (inputText.equals("1")) {
+        }
         // генеруємо ключі з текстом
         else {
             for (int i = 0; i <= 2; i++) {
@@ -111,7 +112,7 @@ public class Server {
 
                 String[] parts = decryptedString.split(":");
 
-                    long receivedTimestamp = Long.parseLong(parts[0]);
+                long receivedTimestamp = Long.parseLong(parts[0]);
 
 
                 String receivedNickname = parts[1];
@@ -129,7 +130,7 @@ public class Server {
                 }
             } catch (SocketException e) {
                 // Обробка помилки, якщо сокет закрито
-            }catch (NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Помилка автентифікації.");
                 DataOutputStream out = new DataOutputStream(socket.getOutputStream());
                 out.writeUTF("Помилка автентифікації.!!!");
@@ -141,8 +142,6 @@ public class Server {
             socket.close();
         }
     }
-
-
 
 
     public static byte[] generate64BitKey(String input) throws NoSuchAlgorithmException {
@@ -159,7 +158,7 @@ public class Server {
         return keyBytes;
     }
 
-    public  static  void PatternPrinter() {
+    public static void PatternPrinter() {
 
         int start = 1; // Початкове число
         int increment = 2; // Збільшення числа

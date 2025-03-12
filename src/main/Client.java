@@ -50,7 +50,6 @@ public class Client {
                 e.printStackTrace();
             }
         }
-
         socket.close();
     }
 }
